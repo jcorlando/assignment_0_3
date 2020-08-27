@@ -10,12 +10,17 @@ module combo_Lock
     localparam s0 = 3'b000, s1 = 3'b001, 
                 s2 = 3'b010, s3 = 3'b011, s4 = 3'b100;
     
-    initial UNLOCK = 0;
-    
     reg [2 : 0] current_state, next_state;
     
+    initial
+    begin
+        current_state = s0;
+        UNLOCK = 0;
+    end
+    
+    
     // State Registers
-    always @ (posedge CLK or posedge RESET)
+    always @ (posedge CLK)
     begin
         if(RESET) current_state <= s0;
         else current_state <= next_state;
@@ -37,16 +42,29 @@ module combo_Lock
                     next_state = s3;
                 else if(b1)
                     next_state = s0;
-            s3:;
-            s4:;
+            s3: if(b0)
+                    next_state = s4;
+                else if(b1)
+                    next_state = s0;
+            s4: if(b1)
+                    next_state = s0;
+                else if(b0)
+                    next_state = s1;
             default next_state = s0;
         endcase
     end
     
-    
-    
-    
-    
+    // Output Logic
+    always @ (current_state or b0 or b1)
+    begin
+        if( (current_state == s4) & b1 == 1)
+            UNLOCK = 1;
+        else 
+            UNLOCK = 0;
+    end
 endmodule
+
+
+
 
 
