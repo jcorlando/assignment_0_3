@@ -22,34 +22,34 @@ end
 initial
 begin
     @(posedge CLK);
-        b0 = 1;
+        b0 = 1;     // 0
         b1 = 0;
     @(posedge CLK);
-        b0 = 1;
+        b0 = 1;     // 0
         b1 = 0;
     @(posedge CLK);
-        b0 = 1;
+        b0 = 1;     // 0
         b1 = 0;
     @(posedge CLK);
-        b0 = 0;
+        b0 = 0;     // 1
         b1 = 1;
     @(posedge CLK);
-        b0 = 1;
+        b0 = 1;     // 0
         b1 = 0;
     @(posedge CLK);
-        b0 = 1;
+        b0 = 1;     // 0
         b1 = 0;
     @(posedge CLK);
-        b0 = 0;
+        b0 = 0;     // 1
         b1 = 1;
     @(posedge CLK);
-        b0 = 1;
+        b0 = 1;     // 0
         b1 = 0;
     @(posedge CLK);
-        b0 = 0;
+        b0 = 0;     // 1
         b1 = 1;
     @(posedge CLK);
-        b0 = 0;
+        b0 = 0;     // 1
         b1 = 1;
 end
 endmodule

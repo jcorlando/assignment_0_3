@@ -32,23 +32,23 @@ module combo_Lock
         case(current_state)
             s0: if(b0)
                     next_state = s1;
-                else if(b1)
+                else
                     next_state = s0;
             s1: if(b1)
                     next_state = s2;
-                else if(b0)
+                else
                     next_state = s1;
             s2: if(b0)
                     next_state = s3;
-                else if(b1)
+                else
                     next_state = s0;
             s3: if(b0)
                     next_state = s4;
-                else if(b1)
+                else
                     next_state = s0;
             s4: if(b1)
                     next_state = s0;
-                else if(b0)
+                else
                     next_state = s1;
             default next_state = s0;
         endcase
